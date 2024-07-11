@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _2018S2EX5
 {
     internal class Program
     {
         /*
+         * n=4 => v = [3,5,2,7]
+             
              j
              0 1 2 3
 
@@ -47,67 +45,41 @@ namespace _2018S2EX5
             {
                 Console.Write(v[i] + " ");
             }
-            //Console.WriteLine();
-            //Console.Write("Display reverse elements from array: ");
+            Console.WriteLine();
+            Console.Write("Display reverse elements from array: ");
 
-            //for (int i=0;i<n;i++)
-            //{
-            //    reversArray[i] = v[n - i - 1];
-            //    Console.Write(reversArray[i] + " ");
-            //}         
-
-            //int[,] mat = new int[n,n];
-            //for(int i = 0;i < n; i++)
-            //{
-            //    for (int j = 0; j < n; j++)
-            //    {
-
-            //    }
-            //    Console.WriteLine();
-            //}
-
-            //Console.WriteLine("Display matrix: ");
-            //for(int i = 0; i < n; i++)
-            //{
-            //    for(int j = 0; j < n; j++)
-            //    {
-            //        Console.Write(mat[i, j] + " ");
-            //    }
-            //    Console.WriteLine() ;
-            //}
-
-            //Algorithm sorted vector bubble sort
-
-            //for (int i = 0; i < n - 1; i++)
-            //{
-            //    for (int j = 0; j < n - 1 - i; j++)
-            //    {
-            //        if (v[j] > v[j + 1])
-            //        {
-            //            var temp = v[j];
-            //            v[j] = v[j + 1];
-            //            v[j + 1] = temp;
-            //        }
-            //    }
-            //}
-
-            bool isOk = false;
-            for(int i=0;i<=n-1;i++)
+            for (int i = 0; i < n; i++)
             {
-                if (v[i] == 2)
+                reversArray[i] = v[n - i - 1];
+                Console.Write(reversArray[i] + " ");
+            }
+
+            int[,] mat = new int[n,n];
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
                 {
-                    isOk = true;    
-                    break;
+                    if(j % 2 == 0)
+                    {
+                        mat[i, j] = v[i];
+                    }
+                    else
+                    {
+                        mat[i, j] = reversArray[i];
+                    }
                 }
+                Console.WriteLine();
             }
-            Console.WriteLine(isOk);
 
-            Console.WriteLine("The sorted array is: ");
-            for(int i = 0 ; i <= n-1; i++)
+            Console.WriteLine("Display matrix: ");
+            for (int i = 0; i < n; i++)
             {
-                Console.Write(v[i] + " ");
-            }
-
+                for (int j = 0; j < n; j++)
+                {
+                    Console.Write(mat[i, j] + " ");
+                }
+                Console.WriteLine();
+            }           
             Console.ReadKey();
         }
     }

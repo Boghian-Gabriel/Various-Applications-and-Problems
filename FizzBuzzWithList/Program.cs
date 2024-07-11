@@ -8,7 +8,9 @@ namespace FizzBuzzWithList
 {
     internal class Program
     {
-     //Create a function that return a list of first 100 numbers.
+        private static List<int> lFizzBuzz = new List<int>();
+
+        //Create a function that return a list of first 100 numbers.
         public static List<int> GetInteger()
         {
             const int numberOfIntegers = 100;
@@ -33,31 +35,66 @@ namespace FizzBuzzWithList
             return listOfIntegeres;
         }
 
+        /// <summary>
+        /// To do update lFizzBuzz not display from here, 
+        /// </summary>
+        /// <param name="list"></param>
         private static void FizzBuzz(List<int> list)
         {
-            string rez;
+            string result;
+            lFizzBuzz = new List<int>();
+
             foreach (var item in list)
             {
-                List<int> lFizzBuzz = new List<int>();
                 if (item % 3 == 0 && item % 5 == 0)
                 {
-                    rez = "FizzBuzz";
+                    result = "FizzBuzz";
                     lFizzBuzz.Add(item);
                 }
-                else if (item % 3 == 0) rez = "Fizz";
-                else if (item % 5 == 0) rez = "Buzz";
-                else rez = item.ToString();
+                else if (item % 3 == 0) result = "Fizz";
+                else if (item % 5 == 0) result = "Buzz";
+                else result = item.ToString();
 
-                Console.WriteLine(rez);
+                Console.WriteLine(result);
 
-                if (item % 3 == 0 && item % 5 == 0)
+                //if (item % 3 == 0 && item % 5 == 0)
+                //{
+                //    Console.Write("This list will display only FizzBuzz numbers: ");
+                //    foreach (var f in lFizzBuzz)
+                //    {
+                //        Console.WriteLine(f);
+                //    }
+                //    Console.WriteLine();
+                //}
+            }
+        }
+
+        private static Dictionary<int,string> CreateDictWithFizzBuzz(List<int> list)
+        {
+            Dictionary<int, string> dictFizzBuzz = new Dictionary<int, string>();
+
+            if (list != null)
+            {                
+                foreach (var item in list)
                 {
-                    Console.Write("This list will display only FizzBuzz numbers: ");
-                    foreach (var f in lFizzBuzz)
+                    if (!dictFizzBuzz.ContainsKey(item))
                     {
-                        Console.Write(" " + f);
+                        dictFizzBuzz.Add(item, "FizzBuzz");
                     }
-                    Console.WriteLine();
+                }
+            }
+            return dictFizzBuzz;
+        }
+
+        private static void DisplayFizzBuzzItems(Dictionary<int, string> dictItems)
+        {
+            if (dictItems != null)
+            {
+                Console.WriteLine();
+                Console.Write("Total number from dictionary:" + dictItems.Count);
+                foreach (var item in dictItems)
+                {
+                    Console.WriteLine($"{item.Key} - {item.Value}");
                 }
             }
         }
@@ -74,6 +111,11 @@ namespace FizzBuzzWithList
             //declare another list with n number of numbers
             List<int> list2 = GetInteger2(num);
             FizzBuzz(list2);
+
+            //Display only fizzbuzz items
+            
+            var dict = CreateDictWithFizzBuzz(lFizzBuzz);
+            DisplayFizzBuzzItems(dict);
             Console.ReadLine();
         }
     }

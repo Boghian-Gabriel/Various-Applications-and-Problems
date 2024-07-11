@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TemplateMethodDesignPattern
 {
@@ -14,21 +10,19 @@ namespace TemplateMethodDesignPattern
 
             //Method Template for Design Pattern
             BuildProjectOnStaging obj = new BuildProjectOnStaging();
+            obj.RunTest();
             Console.ReadKey();
         }
     }
 
     public class BuildProject
-    {
-        //constructor for BuildProject
-        
+    {                
         public BuildProject()
         {
             CompileCode();
             RunTest();
             DeployCode();
         }
-
         
         public virtual void CompileCode()
         {
@@ -44,15 +38,14 @@ namespace TemplateMethodDesignPattern
         {
             Console.WriteLine("Deploy QE server ");
         }
-
     }
 
     public class BuildProjectOnStaging : BuildProject
     {
         public BuildProjectOnStaging(): base() 
         { }
-        //suprascriere metodei RunTest din clasa de baza
-        //
+        // suprascriere metodei RunTest din clasa de baza
+        // Run-time polymorphism is also known as inheritance-based polymorphism or method overriding. 
         public override void RunTest()
         {
             Console.WriteLine("Running is here...");

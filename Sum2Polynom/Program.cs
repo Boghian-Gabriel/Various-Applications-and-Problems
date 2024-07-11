@@ -48,7 +48,6 @@
             }
         }
 
-        // Driver code
         public static void Main()
         {
             // The following array represents
@@ -75,6 +74,7 @@
 
             PrintPoly(sum, size);
 
+            Console.ReadKey();
         }
     }
 }

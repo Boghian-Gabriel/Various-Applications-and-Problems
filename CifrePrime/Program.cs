@@ -8,6 +8,10 @@ namespace CifrePrime
 {
     internal class Program
     {
+        /// <summary>
+        /// To do: optimizare
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             Console.Write("Introdu un numar : ");
@@ -42,16 +46,16 @@ namespace CifrePrime
                     {
                         if(uc % div == 0)
                         {
-                            cNrDiv++;
+                            cNrDiv++; //nr de devizori ai numarului
                         }
                     }
                     //Daca are numar = 2 de divizori (daca se imaprte la 1 si la el insuri atunci este prim)
-                   if (cNrDiv == 2)
+                    if (cNrDiv == 2)
                     {
                         isNrPrim = true;
                         cNrPrime++;
-                    lstcifrelePrimeDinNumar.Add(uc);
-                    lstcifrelePrimeDinNumar.Sort();
+                        lstcifrelePrimeDinNumar.Add(uc);
+                        lstcifrelePrimeDinNumar.Sort();
                     }
                 }
                 nrCifreList.Add(uc);
@@ -70,7 +74,6 @@ namespace CifrePrime
             {
                 Console.WriteLine($"\nNumarul {number} are {cNrPrime} cifre prime!");
             }
-
 
             Console.Write($"\nCifrele prime ale numarului {number} sunt: ");
             foreach (var cifrePrime in lstcifrelePrimeDinNumar)
